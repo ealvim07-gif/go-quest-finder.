@@ -1,0 +1,39 @@
+name: Coleta automática de Field Research
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Todos os dias às 05:23 no horário de Mato Grosso do Sul (UTC-4).
+    - cron: "23 9 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: field-research-collector
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Coletar fontes públicas
+        run: python scripts/collect.py
+      - name: Salvar somente novos registros e status
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/quests.json data/collection-status.json
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração nos dados."
+          else
+            git commit -m "Atualiza pesquisas de campo públicas"
+            git push
+          fi
