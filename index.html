@@ -17,7 +17,7 @@
 <div class="two"><label>Cidade<input id="city" placeholder="Qualquer cidade"></label><label>País<input id="country" placeholder="Qualquer país"></label></div>
 <div class="two"><label>Tipo<select id="kind"><option value="">Todos</option><option>Pesquisa de campo</option><option>Evento</option><option>Outro</option></select></label><label>Coordenadas<select id="verified"><option value="">Todas</option><option value="yes">Associadas à fonte</option><option value="no">Não verificadas</option></select></label></div>\n<label>Origem da busca<select id="searchGroup"><option value="">Todas as buscas</option><option value="world">Busca mundial geral</option><option value="specific">Missões específicas</option></select></label>\n<p class="muted">A coleta automática roda diariamente: uma busca ampla e buscas separadas para cada missão configurada.</p>
 <div class="actions"><button id="search">Buscar</button><button id="clear" class="secondary">Limpar</button></div>
-<p id="count" class="muted" aria-live="polite">Carregando missões…</p>
+<p id="count" class="muted" aria-live="polite">Carregando missões…</p>\n<p id="collectorStatus" class="muted" aria-live="polite">Verificando a coleta automática…</p>
 </section>
 <section class="results"><div class="section-head"><h2>Missões encontradas</h2><span id="updated" class="muted"></span></div><div id="list" class="list"></div></section>
 <section class="map-panel panel"><div class="section-head"><h2>Mapa</h2><span class="muted">Somente coordenadas válidas</span></div><div id="map"></div></section>
