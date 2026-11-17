@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101827"><meta name="description" content="Buscador comunitário de missões de pesquisa de campo do Pokémon GO.">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg">
+<link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<title>GO Quest Finder</title>
+</head>
+<body>
+<header class="top"><div class="brand"><span class="pokeball">◉</span><div><h1>GO Quest Finder</h1><p>Encontre missões pelo mundo</p></div></div><span class="tag">BETA</span></header>
+<main>
+<section class="intro"><h2>Encontre sua próxima missão</h2><p>Pesquise tarefas, recompensas e locais enviados pela comunidade.</p></section>
+<section class="filters panel">
+<label>Missão ou palavra-chave<input id="task" placeholder="Ex.: Faça uma jogada excelente"></label>
+<label>Recompensa<input id="reward" placeholder="Ex.: doces de Eternatus"></label>
+<div class="two"><label>Cidade<input id="city" placeholder="Qualquer cidade"></label><label>País<input id="country" placeholder="Qualquer país"></label></div>
+<div class="two"><label>Tipo<select id="kind"><option value="">Todos</option><option>Pesquisa de campo</option><option>Evento</option><option>Outro</option></select></label><label>Coordenadas<select id="verified"><option value="">Todas</option><option value="yes">Verificadas</option><option value="no">Não verificadas</option></select></label></div>
+<div class="actions"><button id="search">Buscar</button><button id="clear" class="secondary">Limpar</button></div>
+<p id="count" class="muted" aria-live="polite">Carregando missões…</p>
+</section>
+<section class="results"><div class="section-head"><h2>Missões encontradas</h2><span id="updated" class="muted"></span></div><div id="list" class="list"></div></section>
+<section class="map-panel panel"><div class="section-head"><h2>Mapa</h2><span class="muted">Somente coordenadas válidas</span></div><div id="map"></div></section>
+<p class="notice">Este projeto não é afiliado à Niantic. Confirme a missão no jogo antes de se deslocar. Dados enviados pela comunidade podem expirar.</p>
+</main>
+<footer>GO Quest Finder · Projeto comunitário gratuito</footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="app.js"></script>
+</body></html>
