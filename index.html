@@ -1,31 +1,15 @@
 <!doctype html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#101827"><meta name="description" content="Buscador comunitário de missões de pesquisa de campo do Pokémon GO.">
-<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg">
-<link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<title>GO Quest Finder</title>
-</head>
-<body>
-<header class="top"><div class="brand"><span class="pokeball">◉</span><div><h1>GO Quest Finder</h1><p>Encontre missões pelo mundo</p></div></div><span class="tag">BETA</span></header>
-<main>
-<section class="intro"><h2>Encontre sua próxima missão</h2><p>Pesquise tarefas, recompensas e locais enviados pela comunidade.</p></section>
-<section class="filters panel">
-<label>Missão ou palavra-chave<input id="task" placeholder="Ex.: Faça uma jogada excelente"></label>
-<label>Recompensa<input id="reward" placeholder="Ex.: doces de Eternatus"></label>
-<div class="two"><label>Cidade<input id="city" placeholder="Qualquer cidade"></label><label>País<input id="country" placeholder="Qualquer país"></label></div>
-<div class="two"><label>Tipo<select id="kind"><option value="">Todos</option><option>Pesquisa de campo</option><option>Evento</option><option>Outro</option></select></label><label>Coordenadas<select id="verified"><option value="">Todas</option><option value="yes">Associadas à fonte</option><option value="no">Não verificadas</option></select></label></div>
-<label>Origem da busca<select id="searchGroup"><option value="">Todas as buscas</option><option value="world">Busca mundial geral</option><option value="specific">Missões específicas</option></select></label>
-<p class="muted">A coleta automática roda diariamente: uma busca ampla e buscas separadas para cada missão configurada.</p>
-<div class="actions"><button id="search">Buscar</button><button id="clear" class="secondary">Limpar</button></div>
-<p id="count" class="muted" aria-live="polite">Carregando missões…</p>
-<p id="collectorStatus" class="muted" aria-live="polite">Verificando a coleta automática…</p>
-</section>
-<section class="results"><div class="section-head"><h2>Missões encontradas</h2><span id="updated" class="muted"></span></div><div id="list" class="list"></div></section>
-<section class="map-panel panel"><div class="section-head"><h2>Mapa</h2><span class="muted">Somente coordenadas válidas</span></div><div id="map"></div></section>
-<p class="notice">Este projeto não é afiliado à Niantic. Confirme a missão no jogo antes de se deslocar. Dados enviados pela comunidade podem expirar.</p>
-</main>
-<footer>GO Quest Finder · Projeto comunitário gratuito</footer>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="app.js"></script>
-</body></html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101827"><meta name="description" content="Buscador comunitário de missões do Pokémon GO."><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><title>GO Quest Finder</title></head>
+<body><header class="top"><div class="brand"><span class="pokeball">◉</span><div><h1>GO Quest Finder</h1><p>Missões de pesquisa de campo pelo mundo</p></div></div><span class="tag">BETA</span></header>
+<main><section class="intro"><h2>Encontre missões sem precisar digitar</h2><p>Escolha filtros ou envie uma captura de tela do Pokémon GO.</p></section>
+<section class="panel filters"><h2>🔎 Buscar por seleção</h2>
+<label>Tipo de missão<select id="taskSelect"><option value="">Todas as missões</option><option>Faça uma jogada excelente</option><option>Faça 3 jogadas excelentes</option><option>Faça 3 ótimas jogadas</option><option>Capture 5 Pokémon</option><option>Capture 10 Pokémon</option><option>Capture Catch 8 Pokémon</option><option>Gire 3 Poképaradas</option><option>Envie 3 presentes</option><option>Vença uma reide</option><option>Vença uma Batalha Max</option><option>Fortaleça Pokémon 5 vezes</option><option>Incube um ovo</option><option>Caminhe 1 km</option></select></label>
+<label>Recompensa<select id="rewardSelect"><option value="">Todas as recompensas</option><option>Doces de Eternatus</option><option>Doces raros</option><option>Doces XL</option><option>Pokémon</option><option>Poké Bolas</option><option>Poção</option><option>Poeira Estelar</option><option>Energia Mega</option></select></label>
+<div class="two"><label>País (opcional)<input id="country" placeholder="Ex.: Japão"></label><label>Cidade (opcional)<input id="city" placeholder="Ex.: Tóquio"></label></div>
+<details><summary>Filtros avançados</summary><label>Quantidade / texto da recompensa<input id="rewardText" placeholder="Ex.: 25 doces"></label><label>Palavra da missão<input id="taskText" placeholder="Ex.: excelente"></label></details>
+<div class="actions"><button id="search">Buscar missões</button><button id="clear" class="secondary">Limpar</button></div><p id="count" class="muted" aria-live="polite">Carregando base pública...</p><p id="collectorStatus" class="muted" aria-live="polite">Verificando atualização...</p></section>
+<section class="panel"><h2>📷 Ler captura de tela do jogo</h2><p class="muted">Envie uma imagem da tela de recompensa da Pesquisa de Campo. O reconhecimento é feito no navegador; confira o texto antes de pesquisar.</p><input id="imageInput" type="file" accept="image/*"><button id="readImage" class="secondary">Reconhecer missão e recompensa</button><p id="ocrStatus" class="muted" aria-live="polite"></p><label>Texto reconhecido<textarea id="ocrText" rows="4" placeholder="O texto reconhecido aparecerá aqui."></textarea></label><div class="two"><label>Missão reconhecida<input id="ocrTask" placeholder="Confirme a missão"></label><label>Recompensa reconhecida<input id="ocrReward" placeholder="Confirme a recompensa"></label></div><button id="useOcr">Usar estes dados na busca</button></section>
+<section class="panel"><h2>🌐 Fontes comunitárias</h2><p>Também consulte o catálogo público de Field Research do PokeXperience. A disponibilidade de coordenadas varia conforme a fonte e o acesso.</p><p><a href="https://pokexperience.com/field-research/" target="_blank" rel="noopener">Abrir PokeXperience — Field Research</a></p><p><a href="https://github.com/bilde2910/FreeField" target="_blank" rel="noopener">FreeField — projeto open-source de mapas comunitários</a></p></section>
+<section class="results"><div class="section-head"><h2>Missões encontradas na base</h2><span id="updated" class="muted"></span></div><div id="list" class="list"></div></section>
+<section class="panel map-panel"><div class="section-head"><h2>Mapa</h2><span class="muted">Coordenadas associadas à fonte</span></div><div id="map"></div></section><p class="notice">O aplicativo não acessa diretamente o jogo nem possui uma API oficial da Niantic. A leitura da imagem ajuda a preencher a busca, mas não confirma que a missão ainda esteja ativa. Dados comunitários podem expirar.</p></main><footer>GO Quest Finder · Projeto comunitário gratuito</footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script><script src="app.js"></script></body></html>
