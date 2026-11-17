@@ -1,0 +1,22 @@
+{
+  "general_queries": [
+    "\"Pokemon GO\" \"Field Research\" coordinates reward",
+    "\"Pokemon GO\" \"research task\" coordinates",
+    "\"Pokemon GO\" \"field research\" \"GPS\"",
+    "\"Pokemon GO\" \"pesquisa de campo\" coordenadas recompensa"
+  ],
+  "specific_searches": [
+    {
+      "id": "excellent-throw-eternatus-25",
+      "name": "Make an Excellent Throw — 25 doces de Eternatus",
+      "task_terms": ["Make an Excellent Throw", "Faça uma jogada excelente", "Fazer uma jogada excelente"],
+      "reward_terms": ["25 Eternatus Candy", "25 Eternatus candies", "25 doces de Eternatus", "Eternatus Candy x25"],
+      "search_queries": [
+        "\"Make an Excellent Throw\" \"Eternatus\" coordinates",
+        "\"25 Eternatus Candy\" \"Pokestop\"",
+        "\"25 doces de Eternatus\" coordenadas Pokemon GO"
+      ]
+    }
+  ],
+  "notes": "Adicione novas buscas específicas duplicando um objeto em specific_searches. A coleta só aceita registros quando missão, recompensa e coordenadas aparecem associados no conteúdo público."
+}
