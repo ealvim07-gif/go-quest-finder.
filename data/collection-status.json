@@ -1,9 +1,9 @@
 {
-  "last_run_utc": null,
-  "feeds_checked": 0,
-  "items_seen": 0,
+  "last_run_utc": "2026-11-18T10:25:40.502713+00:00",
+  "feeds_checked": 14,
+  "items_seen": 30,
   "new_verified_records": 0,
   "total_records": 0,
-  "coverage": "not_run_yet",
-  "note": "A coleta será executada pelo GitHub Actions. Ausência de resultados não significa ausência de missões no mundo."
+  "coverage": "partial_public_sources_only",
+  "note": "A ausência de resultados não significa ausência de missões no mundo. Apenas fontes públicas consultadas foram cobertas."
 }
